@@ -3,7 +3,7 @@
 		<form name=open id="openform"><input type="text" name="uri" id="openuri" size="100"></input>
 			<input type="submit" value="<?=__('open')?>">
 		</form>
-		
+
 	</div>
 	<h2><?=$res->getLabel()?> (<?=$res->getUri()?>)</h2>
 	<h3><?=__('types')?></h3>
@@ -26,7 +26,7 @@
 		<?endforeach;?>
 	</div>
 	<?php endif;?>
-	
+
 	<div>
 		<h2><?=__('Triples with subject')?> <?=$res->getLabel()?></h2>
 		<table>
@@ -43,27 +43,24 @@
 			<?endif; endforeach;?>
 		</table>
 	</div>
-	
+
 </div>
 
 <script type="text/javascript">
-
 $(function(){
 	require(['require', 'jquery'], function(req, $) {
-
 		$('.browseLink').click(function(e) {
 			e.preventDefault();
 			uri = '<?=_url('index','Browse')?>?'+$.param({'uri': this.href});
-			helpers.openTab($(this).text(), uri);
+			helpers.openTab($(this).text(), uri, !e.ctrlKey);
 		});
-		
+
 		$('#openform').submit(function(e) {
 			e.preventDefault();
 			uri = '<?=_url('index','Browse')?>?'+$.param({'uri': $('#openuri').val()});
 			helpers.openTab($('#openuri').val(), uri);
 			return false;
 		});
-		
 	});
 });
 </script>
