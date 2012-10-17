@@ -42,6 +42,20 @@
 				?></td></tr>
 			<?endif; endforeach;?>
 		</table>
+		<h2><?=__('Triples with object')?> <?=$res->getLabel()?></h2>
+		<table>
+			<tr><th><?=__('subject')?></th><th><?=__('predicate')?></th></tr>
+			<?foreach($otriples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
+				<tr><td><?
+					if (common_Utils::isUri($triple->subject)) {
+						$obj = new core_kernel_classes_Resource($triple->subject);
+						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
+					} else {
+						echo $triple->object;
+					}
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td></tr>
+			<?endif; endforeach;?>
+		</table>
 	</div>
 
 </div>

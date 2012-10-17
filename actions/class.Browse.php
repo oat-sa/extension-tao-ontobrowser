@@ -40,6 +40,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 		$this->setData('res', $res);
 		$this->setData('types', $res->getTypes());
 		$this->setData('triples', $res->getRdfTriples()->getIterator());
+		$this->setData('otriples', $this->getRdfObjectTriples($res)->getIterator());
 		
 		if ($res->isClass()) {
 			$class = new core_kernel_classes_Class($res->getUri());
@@ -50,6 +51,43 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 		
 		$this->setView('browse.tpl');
 	}
+	
+    private function getRdfObjectTriples( core_kernel_classes_Resource $resource)
+    {
+        $returnValue = null;
+
+        // section 127-0-1-1--30506d9:12f6daaa255:-8000:00000000000012C6 begin
+        
+    	$dbWrapper = core_kernel_classes_DbWrapper::singleton();
+	
+	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
+	     $namespace = $namespaces[substr($resource->uriResource, 0, strpos($resource->uriResource, '#') + 1)];
+	
+	     $query = 'SELECT * FROM "statements" WHERE "object" = ? AND "modelID" = ?';
+	     $result = $dbWrapper->execSql($query, array(
+	    	 $resource->uriResource,
+	     	$namespace->getModelId()
+	     ));
+	
+	     $returnValue = new core_kernel_classes_ContainerCollection(new common_Object(__METHOD__));
+	     while($statement = $result->fetchRow()){
+	     	$triple = new core_kernel_classes_Triple();
+	     	$triple->modelID = $statement["modelID"];
+	     	$triple->subject = $statement["subject"];
+	     	$triple->predicate = $statement["predicate"];
+	     	$triple->object = $statement["object"];
+	     	$triple->id = $statement["id"];
+	     	$triple->lg = $statement["l_language"];
+	     	$triple->readPrivileges = $statement["stread"];
+	     	$triple->editPrivileges = $statement["stedit"];
+	     	$triple->deletePrivileges = $statement["stdelete"];
+	     	$returnValue->add($triple);
+	     }
+        
+        // section 127-0-1-1--30506d9:12f6daaa255:-8000:00000000000012C6 end
+
+        return $returnValue;
+    }
 
 }
 ?>
