@@ -24,6 +24,9 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  */
 class ontoBrowser_helpers_Display
 {
+	
+	private static $mapcache = null;
+	
     /**
      * enable you to cut a long string and end it with [...] and add an hover
      * to display the complete string on mouse over.
@@ -36,15 +39,18 @@ class ontoBrowser_helpers_Display
      */
     public static function reverseConstantLookup($value)
     {
-    	$consts = get_defined_constants(true);
-    	foreach ($consts['user'] as $ckey => $cval) {
-    		if ($cval === $value) {
-    			return $ckey;
-    		}
+    	if (is_null(self::$mapcache)) {
+	    	$consts = get_defined_constants(true);
+	    	self::$mapcache = array();
+	    	foreach ($consts["user"] as $key => $test) {
+	    		if (is_string($test)) {
+	    			self::$mapcache[$test] = $key; 
+	    		}
+	    	}
     	}
-    	return $value;
+    	return isset(self::$mapcache[$value]) ? self::$mapcache[$value] : $value;
     }
-
+    
 } /* end of class tao_helpers_Display */
 
 ?>

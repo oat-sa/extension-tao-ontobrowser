@@ -64,13 +64,13 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     $namespace = $namespaces[substr($resource->uriResource, 0, strpos($resource->uriResource, '#') + 1)];
 	
 	     $query = 'SELECT * FROM "statements" WHERE "object" = ? AND "modelID" = ?';
-	     $result = $dbWrapper->execSql($query, array(
+	     $result = $dbWrapper->query($query, array(
 	    	 $resource->uriResource,
 	     	$namespace->getModelId()
 	     ));
 	
 	     $returnValue = new core_kernel_classes_ContainerCollection(new common_Object(__METHOD__));
-	     while($statement = $result->fetchRow()){
+	     while($statement = $result->fetch()){
 	     	$triple = new core_kernel_classes_Triple();
 	     	$triple->modelID = $statement["modelID"];
 	     	$triple->subject = $statement["subject"];
