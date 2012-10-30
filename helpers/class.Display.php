@@ -40,9 +40,10 @@ class ontoBrowser_helpers_Display
     public static function reverseConstantLookup($value)
     {
     	if (is_null(self::$mapcache)) {
-	    	$consts = get_defined_constants(true);
+    		// use of categorised constants caused crashes
+	    	$consts = get_defined_constants();
 	    	self::$mapcache = array();
-	    	foreach ($consts["user"] as $key => $test) {
+	    	foreach ($consts as $key => $test) {
 	    		if (is_string($test)) {
 	    			self::$mapcache[$test] = $key; 
 	    		}
