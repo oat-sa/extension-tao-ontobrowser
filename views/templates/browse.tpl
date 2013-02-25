@@ -32,7 +32,7 @@
 		<table>
 			<tr><th><?=__('predicate')?></th><th><?=__('object')?></th></tr>
 			<?foreach($triples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
-				<tr><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td><td><?
+				<tr><td><a href="<?=$triple->predicate?>" class="browseLink"><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></a></td><td><?
 					if (common_Utils::isUri($triple->object)) {
 						$obj = new core_kernel_classes_Resource($triple->object);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
