@@ -12,7 +12,7 @@ return array(
 	'name' => 'ontoBrowser',
 	'description' => 'TAO Model Browser',
 	'version' => '2.4',
-	'author' => 'CRP Henri Tudor',
+	'author' => 'Open Assessment Technologies',
 	'dependencies' => array('tao'),
 	'models' => array(
 	),
