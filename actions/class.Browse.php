@@ -64,11 +64,11 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
     	$dbWrapper = core_kernel_classes_DbWrapper::singleton();
 	
 	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
-	     $namespace = $namespaces[substr($resource->uriResource, 0, strpos($resource->uriResource, '#') + 1)];
+	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
 	
 	     $query = 'SELECT * FROM "statements" WHERE "object" = ? AND "modelID" = ?';
 	     $result = $dbWrapper->query($query, array(
-	    	 $resource->uriResource,
+	    	 $resource->getUri(),
 	     	$namespace->getModelId()
 	     ));
 	
