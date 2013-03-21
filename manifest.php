@@ -14,14 +14,6 @@ return array(
 	'version' => '2.4',
 	'author' => 'Open Assessment Technologies',
 	'dependencies' => array('tao'),
-	'models' => array(
-	),
-	'classLoaderPackages' => array(
-		dirname(__FILE__).'/actions/',
-//		dirname(__FILE__).'/helpers/'
-	),
-	'install' => array(
-	),
 	'constants' => array(
 		# actions directory
 		"DIR_ACTIONS"			=> $extpath."actions".DIRECTORY_SEPARATOR,
