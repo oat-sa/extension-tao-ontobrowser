@@ -28,7 +28,9 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	private function getCurrentResource() {
 		if ($this->hasRequestParameter('uri')) {
 			$uri = $this->getRequestParameter('uri');
-			if (substr($uri, 0, 7) == 'http_2_') {
+			if (preg_match('/i[0-9]+/', $uri)) {
+				$uri = LOCAL_NAMESPACE.'#'.$uri;
+			} elseif (substr($uri, 0, 7) == 'http_2_') {
 				$uri = tao_helpers_Uri::decode($uri);
 			}
 		} else {
