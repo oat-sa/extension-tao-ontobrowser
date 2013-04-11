@@ -68,10 +68,9 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
 	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
 	
-	     $query = 'SELECT * FROM "statements" WHERE "object" = ? AND "modelID" = ?';
+	     $query = 'SELECT * FROM "statements" WHERE "object" = ? LIMIT 100';
 	     $result = $dbWrapper->query($query, array(
-	    	 $resource->getUri(),
-	     	$namespace->getModelId()
+	    	 $resource->getUri()
 	     ));
 	
 	     $returnValue = new core_kernel_classes_ContainerCollection(new common_Object(__METHOD__));
