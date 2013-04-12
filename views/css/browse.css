@@ -6,6 +6,19 @@ tr:nth-child(even) td {
     background-color: #F2F2F2;
 }
 
-td {
-    width:50%;
+th {
+    width:45%;
+}
+
+.small {
+    width:5%;
+}
+
+
+
+/*A triple that is not in the scope of the selected language*/
+.notInScope {
+    
+    color:green;
+    
 }

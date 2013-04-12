@@ -31,45 +31,51 @@
 	<div>
 		<h2><?=__('Triples with subject')?> <?=$res->getLabel()?></h2>
 		<table>
-			<tr><th><?=__('predicate')?></th><th><?=__('object')?></th></tr>
-			<?foreach($triples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
-				<tr><td><a href="<?=$triple->predicate?>" class="browseLink"><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></a></td><td><?
+			<tr><th><?=__('predicate')?></th><th><?=__('object')?></th><th class="small"><?=__('ModelId')?></th><th class="small"><?=__('lg')?></th></tr>
+			<?foreach($triples as $triple):	?>
+				<? if ($triple->lg == '' || $triple->lg == DEFAULT_LANG || $triple->lg ==get_data("userLg")) $class="inScope"; else $class="notInScope"; ?>
+				<tr class="<?= $class ?>">
+				    <td><a href="<?=$triple->predicate?>" class="browseLink"><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></a></td><td><?
 					if (common_Utils::isUri($triple->object)) {
 						$obj = new core_kernel_classes_Resource($triple->object);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
 					} else {
 						echo $triple->object;
 					}
-				?></td></tr>
-			<?endif; endforeach;?>
+				?></td><td ><?=$triple->modelID?></td><td ><?=$triple->lg?></td></tr>
+			<? endforeach;?>
 		</table>
 		<h2><?=__('Triples with object')?> <?=$res->getLabel()?></h2>
 		<table>
-			<tr><th><?=__('subject')?></th><th><?=__('predicate')?></th></tr>
-			<?foreach($otriples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
-				<tr><td><?
+			<tr><th><?=__('subject')?></th><th><?=__('predicate')?></th><th class="small"><?=__('ModelId')?></th><th class="small"><?=__('lg')?></th></tr>
+			<?foreach($otriples as $triple):?>
+				<? if ($triple->lg == '' || $triple->lg == DEFAULT_LANG || $triple->lg ==get_data("userLg")) $class="inScope"; else $class="notInScope"; ?>
+				<tr class="<?= $class ?>">
+				    <td><?
 					if (common_Utils::isUri($triple->subject)) {
 						$obj = new core_kernel_classes_Resource($triple->subject);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
 					} else {
 						echo $triple->object;
 					}
-				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td></tr>
-			<?endif; endforeach;?>
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td><td ><?=$triple->modelID?></td><td ><?=$triple->lg?></td></tr>
+			<? endforeach;?>
 		</table>
 		<h2><?=__('Triples with predicate')?> <?=$res->getLabel()?></h2>
 		<table>
-			<tr><th><?=__('subject')?></th><th><?=__('object')?></th></tr>
-			<?foreach($ptriples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
-				<tr><td><?
+			<tr><th><?=__('subject')?></th><th><?=__('object')?></th><th class="small"><?=__('ModelId')?></th><th class="small"><?=__('lg')?></th></tr>
+			<?foreach($ptriples as $triple): ?>
+				<? if ($triple->lg == '' || $triple->lg == DEFAULT_LANG || $triple->lg ==get_data("userLg")) $class="inScope"; else $class="notInScope"; ?>
+				<tr class="<?= $class ?>">
+				    <td><?
 					if (common_Utils::isUri($triple->subject)) {
 						$obj = new core_kernel_classes_Resource($triple->subject);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
 					} else {
 						echo $triple->object;
 					}
-				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->object)?></td></tr>
-			<?endif; endforeach;?>
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->object)?></td><td><?=$triple->modelID?></td><td><?=$triple->lg?></td></tr>
+			<? endforeach;?>
 		</table>
 	</div>
 
