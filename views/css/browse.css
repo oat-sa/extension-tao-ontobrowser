@@ -1,0 +1,11 @@
+/* ! requires css3*/
+tr:nth-child(odd) td {
+    background-color: #DEDEDE;
+}
+tr:nth-child(even) td {
+    background-color: #F2F2F2;
+}
+
+td {
+    width:50%;
+}

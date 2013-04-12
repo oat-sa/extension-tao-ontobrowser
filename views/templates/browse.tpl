@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?= ROOT_URL ?>ontoBrowser/views/css/browse.css" />
 <div class="main-container">
 	<div>
 		<form name=open id="openform"><input type="text" name="uri" id="openuri" size="100"></input>
@@ -54,6 +55,20 @@
 						echo $triple->object;
 					}
 				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td></tr>
+			<?endif; endforeach;?>
+		</table>
+		<h2><?=__('Triples with predicate')?> <?=$res->getLabel()?></h2>
+		<table>
+			<tr><th><?=__('subject')?></th><th><?=__('object')?></th></tr>
+			<?foreach($ptriples as $triple): if ($triple->lg == '' || $triple->lg == DEFAULT_LANG) :	?>
+				<tr><td><?
+					if (common_Utils::isUri($triple->subject)) {
+						$obj = new core_kernel_classes_Resource($triple->subject);
+						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
+					} else {
+						echo $triple->object;
+					}
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->object)?></td></tr>
 			<?endif; endforeach;?>
 		</table>
 	</div>

@@ -45,7 +45,8 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 		$this->setData('res', $res);
 		$this->setData('types', $res->getTypes());
 		$this->setData('triples', $res->getRdfTriples()->getIterator());
-		$this->setData('otriples', $this->getRdfObjectTriples($res)->getIterator());
+		$this->setData('otriples', $this->getRdfTriples($res, 'Object')->getIterator());
+		$this->setData('ptriples', $this->getRdfTriples($res, 'Predicate')->getIterator());
 		
 		if ($res->isClass()) {
 			$class = new core_kernel_classes_Class($res->getUri());
@@ -57,7 +58,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 		$this->setView('browse.tpl');
 	}
 	
-    private function getRdfObjectTriples( core_kernel_classes_Resource $resource)
+    private function getRdfTriples( core_kernel_classes_Resource $resource, $usingRestrictionOn = "Object")
     {
         $returnValue = null;
 
@@ -68,7 +69,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
 	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
 	
-	     $query = 'SELECT * FROM "statements" WHERE "object" = ? LIMIT 100';
+	     $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelID LIMIT 100 ';
 	     $result = $dbWrapper->query($query, array(
 	    	 $resource->getUri()
 	     ));
