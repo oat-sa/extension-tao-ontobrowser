@@ -59,7 +59,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 			$this->setData('subclasses', $class->getSubClasses());
 			$this->setData('instances', $class->getInstances());
 		}
-		$this->setData('userLg', core_kernel_classes_Session::singleton()->getLg());
+		$this->setData('userLg', core_kernel_classes_Session::singleton()->getDataLanguage());
 		
 		$this->setView('browse.tpl');
 	}
