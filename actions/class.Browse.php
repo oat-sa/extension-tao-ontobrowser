@@ -3,7 +3,7 @@
  * QtiAuthoring Controller provide actions to edit a QTI item
  *
  * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
- * @package taoItems
+ * @package ontoBrowser
  * @subpackage actions
  * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
