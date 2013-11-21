@@ -14,6 +14,10 @@ return array(
 	'version' => '2.4',
 	'author' => 'Open Assessment Technologies',
 	'dependencies' => array('tao'),
+    'managementRole' => 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole',
+    'acl' => array(
+        array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole', array('ext'=>'ontoBrowser')),
+    ),
 	'constants' => array(
 		# actions directory
 		"DIR_ACTIONS"			=> $extpath."actions".DIRECTORY_SEPARATOR,
