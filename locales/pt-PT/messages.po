@@ -27,4 +27,4 @@ msgid "predicate"
 msgstr "predicado"
 
 msgid "subject"
-msgstr "sujeito"
+msgstr "assunto"
