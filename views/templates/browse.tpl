@@ -80,24 +80,4 @@
 	</div>
 
 </div>
-
-<script type="text/javascript">
-$(function(){
-	require(['require', 'jquery'], function(req, $) {
-		$('.browseLink').click(function(e) {
-			e.preventDefault();
-			uri = '<?=_url('index','Browse')?>?'+$.param({'uri': this.href});
-			helpers.openTab($(this).text(), uri, !e.ctrlKey);
-		});
-
-		$('#openform').submit(function(e) {
-			e.preventDefault();
-			uri = '<?=_url('index','Browse')?>?'+$.param({'uri': $('#openuri').val()});
-			helpers.openTab($('#openuri').val(), uri);
-			return false;
-		});
-	});
-});
-</script>
-
 <?include(TAO_TPL_PATH.'footer.tpl');?>
