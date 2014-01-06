@@ -18,16 +18,22 @@
  *
  */
 define(['jquery', 'helpers'], function($, helpers) {
-    $('.browseLink').click(function(e) {
-            e.preventDefault();
-            var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': this.href });
-            helpers.openTab($(this).text(), uri, !e.ctrlKey);
-    });
+    
+    return {
+        start : function(){
+    
+            $('.browseLink').click(function(e) {
+                    e.preventDefault();
+                    var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': this.href });
+                    helpers.openTab($(this).text(), uri, !e.ctrlKey);
+            });
 
-    $('#openform').submit(function(e) {
-            e.preventDefault();
-            var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': $('#openuri').val()});
-            helpers.openTab($('#openuri').val(), uri);
-            return false;
-    });
+            $('#openform').submit(function(e) {
+                    e.preventDefault();
+                    var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': $('#openuri').val()});
+                    helpers.openTab($('#openuri').val(), uri);
+                    return false;
+            });
+        }
+    };
 });
