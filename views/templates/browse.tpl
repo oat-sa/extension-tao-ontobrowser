@@ -56,7 +56,7 @@
 						$obj = new core_kernel_classes_Resource($triple->subject);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
 					} else {
-						echo $triple->object;
+						echo $triple->subject;
 					}
 				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td><td ><?=$triple->modelID?></td><td ><?=$triple->lg?></td></tr>
 			<? endforeach;?>
