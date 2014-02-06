@@ -7,7 +7,7 @@ require_once dirname(__FILE__). '/../tao/includes/class.Bootstrap.php';
 
 $options = array('constants' => array());
 foreach (common_ext_ExtensionsManager::singleton()->getInstalledExtensions() as $ext) {
-	$options['constants'][] = $ext->getID();
+	$options['constants'][] = $ext->getId();
 }
 
 $bootStrap = new BootStrap('ontoBrowser', $options);
