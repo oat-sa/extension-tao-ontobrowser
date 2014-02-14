@@ -42,7 +42,7 @@
 					} else {
 						echo $triple->object;
 					}
-				?></td><td ><?=$triple->modelID?></td><td ><?=$triple->lg?></td></tr>
+				?></td><td ><?=$triple->modelid?></td><td ><?=$triple->lg?></td></tr>
 			<? endforeach;?>
 		</table>
 		<h2><?=__('Triples with object')?> <?=$res->getLabel()?></h2>
@@ -58,7 +58,7 @@
 					} else {
 						echo $triple->subject;
 					}
-				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td><td ><?=$triple->modelID?></td><td ><?=$triple->lg?></td></tr>
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->predicate)?></td><td ><?=$triple->modelid?></td><td ><?=$triple->lg?></td></tr>
 			<? endforeach;?>
 		</table>
 		<h2><?=__('Triples with predicate')?> <?=$res->getLabel()?></h2>
@@ -74,7 +74,7 @@
 					} else {
 						echo $triple->object;
 					}
-				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->object)?></td><td><?=$triple->modelID?></td><td><?=$triple->lg?></td></tr>
+				?></td><td><?=ontoBrowser_helpers_Display::reverseConstantLookup($triple->object)?></td><td><?=$triple->modelid?></td><td><?=$triple->lg?></td></tr>
 			<? endforeach;?>
 		</table>
 	</div>

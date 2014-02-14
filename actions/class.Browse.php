@@ -75,7 +75,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
 	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
 	
-	     $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelID ';
+	     $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelid ';
 	     
 	     $result = $dbWrapper->query($query, array(
 	    	 $resource->getUri()
@@ -84,7 +84,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     $returnValue = new core_kernel_classes_ContainerCollection(new common_Object(__METHOD__));
 	     while($statement = $result->fetch()){
 	     	$triple = new core_kernel_classes_Triple();
-	     	$triple->modelID = $statement["modelID"];
+	     	$triple->modelid = $statement["modelid"];
 	     	$triple->subject = $statement["subject"];
 	     	$triple->predicate = $statement["predicate"];
 	     	$triple->object = $statement["object"];
