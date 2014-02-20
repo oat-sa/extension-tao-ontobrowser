@@ -18,13 +18,7 @@
  *               
  * 
  */
-require_once dirname(__FILE__). '/../tao/includes/class.Bootstrap.php';
+namespace oat\ontoBrowser\actions;
 
-$options = array('constants' => array());
-foreach (common_ext_ExtensionsManager::singleton()->getInstalledExtensions() as $ext) {
-	$options['constants'][] = $ext->getId();
+class Main extends \tao_actions_Main {
 }
-
-$bootStrap = new BootStrap('ontoBrowser', $options);
-$bootStrap->start();
-$bootStrap->dispatch();

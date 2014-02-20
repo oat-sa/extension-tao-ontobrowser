@@ -1,18 +1,24 @@
 <?php
-
-error_reporting(E_ALL);
-
 /**
- * Utility of display methods
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; under version 2
+ * of the License (non-upgradable).
  *
- * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
- * @package tao
- * @subpackage helpers
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * Copyright (c) 2013 (original work) Open Assessment Technologies SA;
+ *
+ *
  */
-
-if (0 > version_compare(PHP_VERSION, '5')) {
-    die('This file was generated for PHP 5');
-}
+namespace oat\ontoBrowser\helpers;
 
 /**
  * Utility of display methods
@@ -22,7 +28,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @package tao
  * @subpackage helpers
  */
-class ontoBrowser_helpers_Display
+class Display
 {
 	
 	private static $mapcache = null;
@@ -52,6 +58,4 @@ class ontoBrowser_helpers_Display
     	return isset(self::$mapcache[$value]) ? self::$mapcache[$value] : $value;
     }
     
-} /* end of class tao_helpers_Display */
-
-?>
+}

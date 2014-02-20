@@ -1,29 +1,31 @@
 <?php
 /**
- * QtiAuthoring Controller provide actions to edit a QTI item
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; under version 2
+ * of the License (non-upgradable).
  *
- * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
- * @package ontoBrowser
- * @subpackage actions
- * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * Copyright (c) 2013 (original work) Open Assessment Technologies SA;
+ *
+ *
  */
+namespace oat\ontoBrowser\actions;
 
-class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
+class Browse extends \tao_actions_CommonModule {
 
-	/**
-	 * constructor: initialize the service and the default data
-	 * @return Delivery
-	 */
-	public function __construct(){
-
-		parent::__construct();
-
-	}
-	
 	/**
 	 * Return the currently viewing resource
 	 * 
-	 * @return core_kernel_classes_Resource
+	 * @return \core_kernel_classes_Resource
 	 */
 	private function getCurrentResource() {
 		if ($this->hasRequestParameter('uri')) {
@@ -31,12 +33,12 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 			if (preg_match('/^i[0-9]+$/', $uri)) {
 				$uri = LOCAL_NAMESPACE.'#'.$uri;
 			} elseif (substr($uri, 0, 7) == 'http_2_') {
-				$uri = tao_helpers_Uri::decode($uri);
+				$uri = \tao_helpers_Uri::decode($uri);
 			}
 		} else {
 			$uri = TAO_OBJECT_CLASS;
 		}
-		return new core_kernel_classes_Resource($uri);
+		return new \core_kernel_classes_Resource($uri);
 	}
 	
 	public function index() {
@@ -54,25 +56,23 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 		$this->setData('ptriples', $this->getRdfTriples($res, 'Predicate')->getIterator());
 		
 		if ($res->isClass()) {
-			$class = new core_kernel_classes_Class($res->getUri());
+			$class = new \core_kernel_classes_Class($res->getUri());
 			$this->setData('subclassOf', $class->getParentClasses(false));
 			$this->setData('subclasses', $class->getSubClasses());
 			$this->setData('instances', $class->getInstances());
 		}
-		$this->setData('userLg', core_kernel_classes_Session::singleton()->getDataLanguage());
+		$this->setData('userLg', \core_kernel_classes_Session::singleton()->getDataLanguage());
 		
 		$this->setView('browse.tpl');
 	}
 	
-    private function getRdfTriples( core_kernel_classes_Resource $resource, $usingRestrictionOn = "Object")
+    private function getRdfTriples( \core_kernel_classes_Resource $resource, $usingRestrictionOn = "Object")
     {
         $returnValue = null;
 
-        // section 127-0-1-1--30506d9:12f6daaa255:-8000:00000000000012C6 begin
-        
-    	$dbWrapper = core_kernel_classes_DbWrapper::singleton();
+    	$dbWrapper = \core_kernel_classes_DbWrapper::singleton();
 	
-	     $namespaces = common_ext_NamespaceManager::singleton()->getAllNamespaces();
+	     $namespaces = \common_ext_NamespaceManager::singleton()->getAllNamespaces();
 	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
 	
 	     $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelid ';
@@ -81,9 +81,9 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	    	 $resource->getUri()
 	     ));
 	
-	     $returnValue = new core_kernel_classes_ContainerCollection(new common_Object(__METHOD__));
+	     $returnValue = new \core_kernel_classes_ContainerCollection(new \common_Object(__METHOD__));
 	     while($statement = $result->fetch()){
-	     	$triple = new core_kernel_classes_Triple();
+	     	$triple = new \core_kernel_classes_Triple();
 	     	$triple->modelid = $statement["modelid"];
 	     	$triple->subject = $statement["subject"];
 	     	$triple->predicate = $statement["predicate"];
@@ -96,10 +96,7 @@ class ontoBrowser_actions_Browse extends tao_actions_CommonModule {
 	     	$returnValue->add($triple);
 	     }
         
-        // section 127-0-1-1--30506d9:12f6daaa255:-8000:00000000000012C6 end
-
         return $returnValue;
     }
 
 }
-?>
