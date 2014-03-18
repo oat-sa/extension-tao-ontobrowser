@@ -1,7 +1,8 @@
-<?php namespace oat\tao\helpers\template;
+<?php
 use oat\ontoBrowser\helpers\Display;
+use oat\tao\helpers\Template as _tpl;
 ?>
-<link rel="stylesheet" type="text/css" href="<?=_css('browse.css')?>" />
+<link rel="stylesheet" type="text/css" href="<?=_tpl::css('browse.css')?>" />
 <div class="main-container">
 	<div>
 		<form name=open id="openform"><input type="text" name="uri" id="openuri" size="100"></input>
@@ -71,7 +72,7 @@ use oat\ontoBrowser\helpers\Display;
 				<? if ($triple->lg == '' || $triple->lg == DEFAULT_LANG || $triple->lg ==get_data("userLg")) $class="inScope"; else $class="notInScope"; ?>
 				<tr class="<?= $class ?>">
 				    <td><?
-					if (common_Utils::isUri($triple->subject)) {
+					if (\common_Utils::isUri($triple->subject)) {
 						$obj = new \core_kernel_classes_Resource($triple->subject);
 						echo '<a href="'.$obj->getUri().'" class="browseLink">'.(strlen($obj->getLabel()) > 0 ? $obj->getLabel() : __('noname')).'</a>';
 					} else {
@@ -83,4 +84,4 @@ use oat\ontoBrowser\helpers\Display;
 	</div>
 
 </div>
-<?php _tpl('footer.tpl', 'tao');?>
+<?php _tpl::inc('footer.tpl', 'tao');?>
