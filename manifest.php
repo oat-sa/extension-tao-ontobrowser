@@ -42,17 +42,22 @@ return array(
         )
     ),
     'routes' => array(
+        /*
+        '/ontoBrowser/views/' => array(
+            'www' => $extpath."views".DIRECTORY_SEPARATOR,
+        ),
+*/
         '/ontoBrowser' => 'oat\\ontoBrowser\\actions'
     ),
     'uninstall' => array(),
 	'constants' => array(
-		# views directory
+		# views directory (required for templates)
 		"DIR_VIEWS"				=> $extpath."views".DIRECTORY_SEPARATOR,
 
-		#BASE URL (usually the domain root)
+		#BASE URL (required by i10n)
 		'BASE_URL'				=> ROOT_URL . 'ontoBrowser/',
 	
-		#BASE WWW the web resources path
+		#BASE WWW the web resources path (required for template helper)
 		'BASE_WWW'				=> ROOT_URL . 'ontoBrowser/views/',
 
 	)
