@@ -26,7 +26,7 @@ namespace oat\ontoBrowser\helpers;
  * @access public
  * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
  * @package tao
- * @subpackage helpers
+ 
  */
 class Display
 {
