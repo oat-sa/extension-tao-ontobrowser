@@ -47,7 +47,7 @@ return array(
             'www' => $extpath."views".DIRECTORY_SEPARATOR,
         ),
 */
-        '/ontoBrowser' => 'oat\\ontoBrowser\\actions'
+        'ontoBrowser' => 'oat\\ontoBrowser\\actions'
     ),
     'uninstall' => array(),
 	'constants' => array(
