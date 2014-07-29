@@ -36,11 +36,7 @@ return array(
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole', array('ext'=>'ontoBrowser')),
     ),
-    'autoload' => array (
-        'psr-4' => array(
-            'oat\\ontoBrowser\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
-        )
-    ),
+
     'routes' => array(
         /*
         '/ontoBrowser/views/' => array(
