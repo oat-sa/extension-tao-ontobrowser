@@ -55,6 +55,11 @@
     	"tao-extension-name" : "ontoBrowser"
     },
     "minimum-stability" : "dev",
+    "autoload" : {
+	"psr-4" : {
+		"oat\\ontoBrowser\\" : ""
+	}
+    },    
     "require": {
         "oat-sa/oatbox-extension-installer": "dev-master"
     }
