@@ -3,7 +3,7 @@
 	<structure id="tools" name="Tools" level="18" group="settings">
 		<description></description>
 		<sections>
-			<section name="Browse Ontology" url="/ontoBrowser/Browse/index"></section>
+			<section id="ontoBrowser" name="Browse Ontology" url="/ontoBrowser/Browse/index"></section>
 		</sections>
 	</structure>
 </structures>
