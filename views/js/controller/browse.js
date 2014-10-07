@@ -17,22 +17,31 @@
  *
  *
  */
-define(['jquery', 'helpers'], function($, helpers) {
+define(['jquery', 'helpers', 'layout/section', 'uri'], function($, helpers, section, uriUtils) {
+
+    function openResource(uri, name){
+        name = name || uri;
+        var url = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': uri });
+        section.create({
+            id           : 'browse-' + uriUtils.encode(uri),
+            name         : name,
+            url          : url,
+            contentBlock : true
+        })
+        .activate(); 
+    }
     
     return {
         start : function(){
     
             $('.browseLink').click(function(e) {
-                    e.preventDefault();
-                    var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': this.href });
-                    helpers.openTab($(this).text(), uri, !e.ctrlKey);
+                e.preventDefault();
+                openResource(this.href, $(this).text());
             });
 
             $('#openform').submit(function(e) {
-                    e.preventDefault();
-                    var uri = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': $('#openuri').val()});
-                    helpers.openTab($('#openuri').val(), uri);
-                    return false;
+                e.preventDefault();
+                openResource($('#openuri').val());
             });
         }
     };
