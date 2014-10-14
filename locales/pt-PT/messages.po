@@ -1,29 +1,26 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: TAO v2.6-beta2\n"
-"PO-Revision-Date: 2014-05-30T15:54:40\n"
+"Project-Id-Version: TAO v2.7\n"
+"PO-Revision-Date: 2014-10-14T10:43:30\n"
 "Last-Translator: TAO Translation Team <translation@tao.lu>\n"
 "MIME-Version: 1.0\n"
 "Language: pt-PT\n"
+"sourceLanguage: en-US\n"
+"targetLanguage: pt-PT\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #, tao-public
-msgid "Browse"
-msgstr "Navegar"
-
-#, tao-public
-msgid "Browse the ontology."
-msgstr "Navegar na ontologia"
+msgid "Browse Ontology"
+msgstr ""
 
 msgid "instances"
 msgstr ""
 
 msgid "lg"
-msgstr ""
-
-#, tao-public
-msgid "Model Browser"
 msgstr ""
 
 msgid "ModelId"
@@ -33,13 +30,13 @@ msgid "noname"
 msgstr ""
 
 msgid "object"
-msgstr "objecto"
+msgstr ""
 
 msgid "open"
 msgstr ""
 
 msgid "predicate"
-msgstr "predicado"
+msgstr ""
 
 msgid "subclass of"
 msgstr ""
@@ -48,7 +45,11 @@ msgid "subclasses"
 msgstr ""
 
 msgid "subject"
-msgstr "assunto"
+msgstr ""
+
+#, tao-public
+msgid "Tools"
+msgstr ""
 
 msgid "Triples with object"
 msgstr ""
