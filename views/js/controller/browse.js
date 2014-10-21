@@ -21,7 +21,7 @@ define(['jquery', 'helpers', 'layout/section', 'uri'], function($, helpers, sect
 
     function openResource(uri, name){
         name = name || uri;
-        var url = helpers._url('index', 'Browse', 'ontoBrowser') + '?' + $.param({'uri': uri });
+        var url = helpers._url('index', 'Browse', 'ontoBrowser', {'uri': uri });
         section.create({
             id           : 'browse-' + uriUtils.encode(uri),
             name         : name,
