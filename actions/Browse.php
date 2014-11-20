@@ -90,9 +90,6 @@ class Browse extends \tao_actions_CommonModule {
 	     	$triple->object = $statement["object"];
 	     	$triple->id = $statement["id"];
 	     	$triple->lg = $statement["l_language"];
-// 	     	$triple->readPrivileges = $statement["stread"];
-// 	     	$triple->editPrivileges = $statement["stedit"];
-// 	     	$triple->deletePrivileges = $statement["stdelete"];
 	     	$returnValue->add($triple);
 	     }
         
