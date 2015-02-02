@@ -7,11 +7,12 @@ module.exports = function(grunt) {
     var root        = grunt.option('root');
     var libs        = grunt.option('mainlibs');
     var ext         = require(root + '/tao/views/build/tasks/helpers/extensions')(grunt, root);
+    var out         = 'output/ontoBrowser';
 
     /**
      * Remove bundled and bundling files
      */
-    clean.ontobrowserbundle = ['output',  root + '/ontoBrowser/views/js/controllers.min.js'];
+    clean.ontobrowserbundle = [out,  root + '/ontoBrowser/views/js/controllers.min.js'];
     
     /**
      * Compile tao files into a bundle 
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
     requirejs.ontobrowserbundle = {
         options: {
             baseUrl : '../js',
-            dir : 'output',
+            dir : out,
             mainConfigFile : './config/requirejs.build.js',
             paths : { 'ontoBrowser' : root + '/ontoBrowser/views/js' },
             modules : [{
@@ -35,8 +36,8 @@ module.exports = function(grunt) {
      */
     copy.ontobrowserbundle = {
         files: [
-            { src: ['output/ontoBrowser/controller/routes.js'],  dest: root + '/ontoBrowser/views/js/controllers.min.js' },
-            { src: ['output/ontoBrowser/controller/routes.js.map'],  dest: root + '/ontoBrowser/views/js/controllers.min.js.map' }
+            { src: [out + '/ontoBrowser/controller/routes.js'],  dest: root + '/ontoBrowser/views/js/controllers.min.js' },
+            { src: [out + '/ontoBrowser/controller/routes.js.map'],  dest: root + '/ontoBrowser/views/js/controllers.min.js.map' }
         ]
     };
 
