@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     /**
      * Remove bundled and bundling files
      */
-    clean.ontobrowserbundle = [out,  root + '/ontoBrowser/views/js/controllers.min.js'];
+    clean.ontobrowserbundle = [out];
     
     /**
      * Compile tao files into a bundle 
