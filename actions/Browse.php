@@ -61,7 +61,8 @@ class Browse extends \tao_actions_CommonModule {
 			$this->setData('subclasses', $class->getSubClasses());
 			$this->setData('instances', $class->getInstances());
 		}
-		$this->setData('userLg', \core_kernel_classes_Session::singleton()->getDataLanguage());
+		
+		$this->setData('userLg', $dataLang = \common_session_SessionManager::getSession()->getDataLanguage());
 		
 		$this->setView('browse.tpl');
 	}
