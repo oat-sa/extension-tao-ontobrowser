@@ -42,6 +42,10 @@ class Browse extends \tao_actions_CommonModule {
 	}
 	
 	public function index() {
+	    
+        // load all extensions
+	    \common_ext_ExtensionsManager::singleton()->getInstalledExtensions();
+	     
 		$res = $this->getCurrentResource();
 		
 		$this->setData('res', $res);
