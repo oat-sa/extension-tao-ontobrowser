@@ -53,11 +53,11 @@ class Browse extends \tao_actions_CommonModule {
 		    //restricted on the currently selected language
 		    //$this->setData('triples', $res->getRdfTriples()->getIterator());
 
-		$this->setData('triples', $this->getRdfTriples($res, 'Subject')->getIterator());
+		$this->setData('triples', $this->getRdfTriples($res, 'subject')->getIterator());
 
-		$this->setData('otriples', $this->getRdfTriples($res, 'Object')->getIterator());
+		$this->setData('otriples', $this->getRdfTriples($res, 'object')->getIterator());
 		
-		$this->setData('ptriples', $this->getRdfTriples($res, 'Predicate')->getIterator());
+		$this->setData('ptriples', $this->getRdfTriples($res, 'predicate')->getIterator());
 		
 		if ($res->isClass()) {
 			$class = new \core_kernel_classes_Class($res->getUri());
@@ -71,7 +71,7 @@ class Browse extends \tao_actions_CommonModule {
 		$this->setView('browse.tpl');
 	}
 	
-    private function getRdfTriples( \core_kernel_classes_Resource $resource, $usingRestrictionOn = "Object")
+    private function getRdfTriples( \core_kernel_classes_Resource $resource, $usingRestrictionOn = "object")
     {
         $returnValue = null;
 
