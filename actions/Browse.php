@@ -41,6 +41,16 @@ class Browse extends \tao_actions_CommonModule {
 		return new \core_kernel_classes_Resource($uri);
 	}
 	
+	public function standAlone() {
+	    $this->setData('client_config_url', $this->getClientConfigUrl(array(
+            'extension'         => 'ontoBrowser',
+            'module'            => 'Browse',
+            'action'            => 'standAlone'
+        )));
+	    $this->setData('content-template', array('Browse/standAlone.tpl', 'ontoBrowser'));
+	    $this->setView('layout.tpl', 'tao');
+	}
+	
 	public function index() {
 	    
         // load all extensions
@@ -74,29 +84,24 @@ class Browse extends \tao_actions_CommonModule {
     private function getRdfTriples( \core_kernel_classes_Resource $resource, $usingRestrictionOn = "object")
     {
         $returnValue = null;
-
-    	$dbWrapper = \core_kernel_classes_DbWrapper::singleton();
-	
-	     $namespaces = \common_ext_NamespaceManager::singleton()->getAllNamespaces();
-	     $namespace = $namespaces[substr($resource->getUri(), 0, strpos($resource->getUri(), '#') + 1)];
-	
-	     $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelid ';
-	     
-	     $result = $dbWrapper->query($query, array(
-	    	 $resource->getUri()
-	     ));
-	
-	     $returnValue = new \core_kernel_classes_ContainerCollection(new \common_Object(__METHOD__));
-	     while($statement = $result->fetch()){
-	     	$triple = new \core_kernel_classes_Triple();
-	     	$triple->modelid = $statement["modelid"];
-	     	$triple->subject = $statement["subject"];
-	     	$triple->predicate = $statement["predicate"];
-	     	$triple->object = $statement["object"];
-	     	$triple->id = $statement["id"];
-	     	$triple->lg = $statement["l_language"];
-	     	$returnValue->add($triple);
-	     }
+        
+        $dbWrapper = \core_kernel_classes_DbWrapper::singleton();
+        
+        $query = 'SELECT * FROM "statements" WHERE "'.$usingRestrictionOn.'" = ? order by modelid ';
+        
+        $result = $dbWrapper->query($query, array($resource->getUri()));
+        
+        $returnValue = new \core_kernel_classes_ContainerCollection(new \common_Object(__METHOD__));
+        while($statement = $result->fetch()){
+        $triple = new \core_kernel_classes_Triple();
+        $triple->modelid = $statement["modelid"];
+        $triple->subject = $statement["subject"];
+        $triple->predicate = $statement["predicate"];
+        $triple->object = $statement["object"];
+        $triple->id = $statement["id"];
+        $triple->lg = $statement["l_language"];
+        $returnValue->add($triple);
+        }
         
         return $returnValue;
     }

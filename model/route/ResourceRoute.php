@@ -1,3 +1,4 @@
+<?php
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -14,20 +15,23 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- * 
- * 
+ *
  */
+namespace oat\ontoBrowser\model\route;
 
-//@see http://forge.taotesting.com/projects/tao/wiki/Front_js
-define(function(){
-    'use strict';
+use oat\tao\model\routing\Route;
 
-    return {
-        'Browse': {
-            'actions' : {
-                'index' : 'controller/browse',
-                'standAlone' : 'controller/Browse/standAlone'
-            }
+class ResourceRoute extends Route
+{
+    public function resolve($relativeUrl) {
+        $config = $this->getConfig();
+        $relNs = \tao_helpers_Request::getRelativeUrl($config['namespace']);
+        
+        if (substr($relativeUrl, 0, strlen($relNs)) == $relNs) {
+            return 'oat\\ontoBrowser\\actions\\Browse@standAlone';
+        } else {
+            return null;
         }
-    };
-});
+    }
+
+}

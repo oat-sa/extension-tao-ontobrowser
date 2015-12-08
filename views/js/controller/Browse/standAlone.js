@@ -13,21 +13,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- * 
- * 
+ * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ *
+ *
  */
-
-//@see http://forge.taotesting.com/projects/tao/wiki/Front_js
-define(function(){
-    'use strict';
-
+define(['jquery', 'helpers', 'layout/section', 'uri'], function($, helpers, section, uriUtils) {
+    
     return {
-        'Browse': {
-            'actions' : {
-                'index' : 'controller/browse',
-                'standAlone' : 'controller/Browse/standAlone'
-            }
+        start : function(){
+        	
+        	var url = helpers._url('index', 'Browse', 'ontoBrowser', {'uri': window.location.href });
+        	$( "#content" ).load( url);
         }
     };
 });
