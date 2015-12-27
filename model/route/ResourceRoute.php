@@ -25,13 +25,15 @@ class ResourceRoute extends Route
 {
     public function resolve($relativeUrl) {
         $config = $this->getConfig();
-        $relNs = \tao_helpers_Request::getRelativeUrl($config['namespace']);
-        
-        if (substr($relativeUrl, 0, strlen($relNs)) == $relNs) {
-            return 'oat\\ontoBrowser\\actions\\Browse@standAlone';
-        } else {
-            return null;
+        try {
+            $relNs = \tao_helpers_Request::getRelativeUrl($config['namespace']);
+            if (substr($relativeUrl, 0, strlen($relNs)) == $relNs) {
+                return 'oat\\ontoBrowser\\actions\\Browse@standAlone';
+            }
+        } catch (\ResolverException $r) {
+            // namespace does not match URL, aborting
         }
+        return null;
     }
 
 }
