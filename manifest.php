@@ -26,7 +26,7 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '2.6',
+    'version' => '2.7',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
         'tao' => '>=2.7.0'
@@ -43,7 +43,11 @@ return array(
             'www' => $extpath."views".DIRECTORY_SEPARATOR,
         ),
 */
-        'ontoBrowser' => 'oat\\ontoBrowser\\actions'
+        'ontoBrowser' => 'oat\\ontoBrowser\\actions',
+        'special' => array(
+            'class' => 'oat\\ontoBrowser\\model\\route\\ResourceRoute',
+            'namespace' => LOCAL_NAMESPACE
+        )
     ),
     'uninstall' => array(),
 	'constants' => array(
