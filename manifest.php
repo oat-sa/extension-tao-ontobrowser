@@ -26,10 +26,10 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '2.7',
+    'version' => '2.8.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
-        'tao' => '>=2.7.0'
+        'taoBackOffice' => '>=0.11'
     ),
     'author' => 'Open Assessment Technologies',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole',
@@ -50,6 +50,7 @@ return array(
         )
     ),
     'uninstall' => array(),
+    'update' => oat\ontoBrowser\model\Updater::class,
 	'constants' => array(
 		# views directory (required for templates)
 		"DIR_VIEWS"				=> $extpath."views".DIRECTORY_SEPARATOR,
