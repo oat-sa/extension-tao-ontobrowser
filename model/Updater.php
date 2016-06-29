@@ -29,6 +29,6 @@ class Updater extends \common_ext_ExtensionUpdater {
      * @see common_ext_ExtensionUpdater::update()
      */
     public function update($initialVersion) {
-        $this->skip('2.6', '2.8.0');
+        $this->skip('2.6', '2.9.0');
     }
 }

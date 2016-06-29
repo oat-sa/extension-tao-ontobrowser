@@ -100,6 +100,7 @@ class Browse extends \tao_actions_CommonModule {
         $triple->object = $statement["object"];
         $triple->id = $statement["id"];
         $triple->lg = $statement["l_language"];
+        $triple->author = $statement["author"];
         $returnValue->add($triple);
         }
         
