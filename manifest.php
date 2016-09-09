@@ -26,7 +26,7 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '2.8.0',
+    'version' => '2.9.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
         'taoBackOffice' => '>=0.11'

@@ -26,7 +26,7 @@ module.exports = function(grunt) {
             modules : [{
                 name: 'ontoBrowser/controller/routes',
                 include : ext.getExtensionsControllers(['ontoBrowser']),
-                exclude : ['mathJax', 'mediaElement'].concat(libs)
+                exclude : ['mathJax'].concat(libs)
             }]
         }
     };
