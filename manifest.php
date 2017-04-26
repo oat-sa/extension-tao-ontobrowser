@@ -26,7 +26,7 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '2.9.0',
+    'version' => '3.0.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
         'taoBackOffice' => '>=0.11'
@@ -57,9 +57,5 @@ return array(
 
 		#BASE URL (required by i10n)
 		'BASE_URL'				=> ROOT_URL . 'ontoBrowser/',
-	
-		#BASE WWW the web resources path (required for template helper)
-		'BASE_WWW'				=> ROOT_URL . 'ontoBrowser/views/',
-
 	)
 );
