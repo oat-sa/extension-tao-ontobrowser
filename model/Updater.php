@@ -20,8 +20,6 @@
  */
 namespace oat\ontoBrowser\model;
 
-use oat\taoItems\model\ontology\ItemAuthorRole;
-
 class Updater extends \common_ext_ExtensionUpdater {
     
     /**
@@ -29,6 +27,6 @@ class Updater extends \common_ext_ExtensionUpdater {
      * @see common_ext_ExtensionUpdater::update()
      */
     public function update($initialVersion) {
-        $this->skip('2.6', '2.9.0');
+        $this->skip('2.6', '3.0.0');
     }
 }
