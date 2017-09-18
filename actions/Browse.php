@@ -38,7 +38,7 @@ class Browse extends \tao_actions_CommonModule {
 				$uri = \tao_helpers_Uri::decode($uri);
 			}
 		} else {
-			$uri = TaoOntology::OBJECT_CLASS;
+			$uri = TaoOntology::OBJECT_CLASS_URI;
 		}
 		return new \core_kernel_classes_Resource($uri);
 	}
