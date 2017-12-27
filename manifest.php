@@ -29,6 +29,7 @@ return array(
     'version' => '3.1.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
+	'tao' => '>=12.21.4',
         'taoBackOffice' => '>=0.11'
     ),
     'author' => 'Open Assessment Technologies',
