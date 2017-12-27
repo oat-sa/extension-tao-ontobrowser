@@ -20,6 +20,8 @@
  */
 namespace oat\ontoBrowser\actions;
 
+use oat\tao\model\TaoOntology;
+
 class Browse extends \tao_actions_CommonModule {
 
 	/**
@@ -36,7 +38,7 @@ class Browse extends \tao_actions_CommonModule {
 				$uri = \tao_helpers_Uri::decode($uri);
 			}
 		} else {
-			$uri = TAO_OBJECT_CLASS;
+			$uri = TaoOntology::OBJECT_CLASS_URI;
 		}
 		return new \core_kernel_classes_Resource($uri);
 	}
