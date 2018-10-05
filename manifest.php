@@ -26,10 +26,10 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '4.0.0',
+    'version' => '5.0.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
-        'tao' => '>=20.0.0',
+        'tao' => '>=21.0.0',
         'taoBackOffice' => '>=0.11'
     ),
     'author' => 'Open Assessment Technologies',
