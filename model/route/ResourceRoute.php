@@ -20,10 +20,13 @@
 namespace oat\ontoBrowser\model\route;
 
 use oat\tao\model\routing\Route;
+use Psr\Http\Message\ServerRequestInterface;
 
 class ResourceRoute extends Route
 {
-    public function resolve($relativeUrl) {
+    public function resolve(ServerRequestInterface $request)
+    {
+        $relativeUrl = \tao_helpers_Request::getRelativeUrl($request->getRequestTarget());
         $config = $this->getConfig();
         try {
             $relNs = \tao_helpers_Request::getRelativeUrl($config['namespace']);
