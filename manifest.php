@@ -29,8 +29,8 @@ return array(
     'version' => '5.0.0',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
-        'tao' => '>=21.0.0',
-        'taoBackOffice' => '>=0.11'
+        'tao'           => '>=21.0.0',
+        'taoBackOffice' => '>=3.0.0'
     ),
     'author' => 'Open Assessment Technologies',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole',
