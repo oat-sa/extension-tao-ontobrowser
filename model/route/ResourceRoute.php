@@ -22,7 +22,7 @@ namespace oat\ontoBrowser\model\route;
 use oat\tao\model\routing\Route;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ResourceRoute extends Route
+class ResourceRoute implements Route
 {
     public function resolve(ServerRequestInterface $request)
     {
@@ -37,6 +37,11 @@ class ResourceRoute extends Route
             // namespace does not match URL, aborting
         }
         return null;
+    }
+
+    public static function getControllerPrefix()
+    {
+        return '';
     }
 
 }
