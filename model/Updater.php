@@ -20,13 +20,15 @@
  */
 namespace oat\ontoBrowser\model;
 
-class Updater extends \common_ext_ExtensionUpdater {
+class Updater extends \common_ext_ExtensionUpdater
+{
 
     /**
      * (non-PHPdoc)
      * @see \common_ext_ExtensionUpdater::update()
      */
-    public function update($initialVersion) {
-        $this->skip('2.6', '5.0.1');
+    public function update($initialVersion)
+    {
+        $this->skip('2.6', '5.0.2');
     }
 }

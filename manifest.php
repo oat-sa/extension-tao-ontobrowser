@@ -14,10 +14,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2013 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2013-2019 (original work) Open Assessment Technologies SA;
  *
  */
+
 $extpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 $taopath = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'tao'.DIRECTORY_SEPARATOR;
 
@@ -26,29 +26,18 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '5.0.1',
+    'version' => '5.0.2',
 	'author' => 'Open Assessment Technologies',
     'requires' => array(
         'tao'           => '>=21.0.0',
         'taoBackOffice' => '>=3.0.0'
     ),
-    'author' => 'Open Assessment Technologies',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole',
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole', array('ext'=>'ontoBrowser')),
     ),
-
     'routes' => array(
-        /*
-        '/ontoBrowser/views/' => array(
-            'www' => $extpath."views".DIRECTORY_SEPARATOR,
-        ),
-*/
         'ontoBrowser' => 'oat\\ontoBrowser\\actions',
-        'special' => array(
-            'class' => 'oat\\ontoBrowser\\model\\route\\ResourceRoute',
-            'namespace' => LOCAL_NAMESPACE
-        )
     ),
     'uninstall' => array(),
     'update' => oat\ontoBrowser\model\Updater::class,
