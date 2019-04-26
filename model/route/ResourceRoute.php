@@ -41,7 +41,7 @@ class ResourceRoute implements Route
 
     public static function getControllerPrefix()
     {
-        return '';
+        return 'oat\\ontoBrowser\\actions\\Browse';
     }
 
 }
