@@ -19,10 +19,10 @@
  */
 namespace oat\ontoBrowser\model\route;
 
-use oat\tao\model\routing\Route;
 use Psr\Http\Message\ServerRequestInterface;
+use oat\tao\model\routing\AbstractRoute;
 
-class ResourceRoute implements Route
+class ResourceRoute extends AbstractRoute
 {
     public function resolve(ServerRequestInterface $request)
     {
@@ -30,7 +30,7 @@ class ResourceRoute implements Route
         $config = $this->getConfig();
         try {
             $relNs = \tao_helpers_Request::getRelativeUrl($config['namespace']);
-            if (substr($relativeUrl, 0, strlen($relNs)) == $relNs) {
+            if (strlen($relNs) != '' && substr($relativeUrl, 0, strlen($relNs)) == $relNs) {
                 return 'oat\\ontoBrowser\\actions\\Browse@standAlone';
             }
         } catch (\ResolverException $r) {
