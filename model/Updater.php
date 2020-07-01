@@ -20,6 +20,9 @@
  */
 namespace oat\ontoBrowser\model;
 
+/**
+ * @deprecated use migrations instead. See https://github.com/oat-sa/generis/wiki/Tao-Update-Process
+ */
 class Updater extends \common_ext_ExtensionUpdater {
 
     /**
@@ -28,5 +31,10 @@ class Updater extends \common_ext_ExtensionUpdater {
      */
     public function update($initialVersion) {
         $this->skip('2.6', '5.0.1');
+        
+        //Updater files are deprecated. Please use migrations.
+        //See: https://github.com/oat-sa/generis/wiki/Tao-Update-Process
+
+        $this->setVersion($this->getExtension()->getManifest()->getVersion());
     }
 }
