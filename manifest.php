@@ -26,13 +26,7 @@ return array(
 	'label' => 'Model Browser',
 	'description' => 'Developement tool to browse the generis ontology',
     'license' => 'GPL-2.0',
-    'version' => '5.1.0',
 	'author' => 'Open Assessment Technologies',
-    'requires' => array(
-        'tao'           => '>=21.0.0',
-        'taoBackOffice' => '>=3.0.0'
-    ),
-    'author' => 'Open Assessment Technologies',
     'managementRole' => 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole',
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#OntoBrowserRole', array('ext'=>'ontoBrowser')),
