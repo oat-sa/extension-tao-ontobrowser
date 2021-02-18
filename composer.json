@@ -56,11 +56,14 @@
     },
     "minimum-stability" : "dev",
     "autoload" : {
-	"psr-4" : {
-		"oat\\ontoBrowser\\" : ""
-	}
+		"psr-4" : {
+			"oat\\ontoBrowser\\" : ""
+		}
     },    
     "require": {
-        "oat-sa/oatbox-extension-installer": "~1.1||dev-master"
-    }
+        "oat-sa/oatbox-extension-installer": "~1.1||dev-master",
+		"oat-sa/generis" : ">=14.0.0",
+		"oat-sa/tao-core" : ">=47.0.0",
+		"oat-sa/extension-tao-backoffice" : ">=6.0.0"
+	}
 }
