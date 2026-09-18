@@ -29,6 +29,7 @@ module.exports = function(grunt) {
                 options : {
                     extension : 'ontoBrowser',
                     outputDir : 'loader',
+                    babelPreTransform: { enabled: true },
                     bundles : [{
                         name : 'ontoBrowser',
                         default : true
